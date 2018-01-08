@@ -454,6 +454,11 @@ Filter_Logs_Message(message) {
 							whispOther2 	:= endOfWhisper
 						}
 
+						if (RegExMatch(whispItem, "(\d*)\s(.*)", whispItemPat)) && (RegExMatch(whispPrice, "(\d*)\s(.*)", whispPricePat)) {
+							whispPriceEa := RegExReplace(Round(whispItemPat1 / whispPricePat1, 3), "(0+)$", "")
+							whispPrice := whispPrice " (@" whispPriceEa ")" 
+						}
+
 						newTradeItem 		:= whispItem
 						newTradePrice 		:= whispPrice
 						newTradeLocation 	:= whispLeague
